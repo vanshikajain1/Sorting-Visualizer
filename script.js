@@ -74,7 +74,7 @@ async function bubbleSort(array) {
       if (array[j] > array[j + 1]) {
         for (let k = 0; k < bars.length; k++) {
           if (k !== j && k !== j + 1) {
-            bars[k].style.backgroundColor = "aqua";
+            bars[k].style.backgroundColor = "red";
           }
         }
         let temp = array[j];
@@ -99,13 +99,14 @@ async function swap(items, leftIndex, rightIndex, bars) {
   items[leftIndex] = items[rightIndex];
   items[rightIndex] = temp;
   bars[leftIndex].style.height = items[leftIndex] * heightFactor + "px";
-  bars[leftIndex].style.backgroundColor = "lightgreen";
+  bars[leftIndex].style.backgroundColor = "pink";
   //bars[leftIndex].innerText = items[leftIndex];
   bars[rightIndex].style.height = items[rightIndex] * heightFactor + "px";
   bars[rightIndex].style.backgroundColor = "lightgreen";
   //bars[rightIndex].innerText = items[rightIndex];
   await sleep(speedFactor);
 }
+
 async function partition(items, left, right) {
   let bars = document.getElementsByClassName("bar");
   let pivotIndex = Math.floor((right + left) / 2);
