@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: rgb(228, 147, 147);
+  /* background-color: #73DB7C; */
 }
 
 .bars_container {
@@ -34,7 +34,7 @@
 
 .bar {
   width: 10px;
-  background-color: #0b79d2;
+  background-color: #6699F2;
   margin: 0 2px;
   border-radius: 2px;
 }

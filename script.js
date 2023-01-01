@@ -4,11 +4,11 @@ let bars_container = document.getElementById("bars_container");
 let select_algo = document.getElementById("algo");
 let speed = document.getElementById("speed");
 let slider = document.getElementById("slider");
-let minRange = 1;
+let minRange = 40;
 let maxRange = slider.value;
 let numOfBars = slider.value;
 let heightFactor = 4;
-let widthFactor = 30;
+let widthFactor = 80;
 let speedFactor = 1000;
 let unsorted_array = new Array(numOfBars);
 
@@ -77,28 +77,38 @@ async function bubbleSort(array) {
   let bars = document.getElementsByClassName("bar");
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length - i - 1; j++) {
+
+      bars[j].style.backgroundColor = "#73DB7C";
+      bars[j + 1].style.backgroundColor = "#73DB7C";
+      await sleep(speedFactor);
+
       if (array[j] > array[j + 1]) {
+        bars[j].style.backgroundColor = "#E05F5E";
+        bars[j + 1].style.backgroundColor = "#E05F5E";
+        await sleep(speedFactor);
         for (let k = 0; k < array.length-i; k++) {
           if (k !== j && k !== j + 1) {
-            bars[k].style.backgroundColor = "grey";
+            bars[k].style.backgroundColor = "#6699F2";
           }
         }
         let temp = array[j];
         array[j] = array[j + 1];
         array[j + 1] = temp;
         bars[j].style.height = array[j] * heightFactor + "px";
-        bars[j].style.backgroundColor = "red";
-        //bars[j].innerText = array[j];
+        bars[j].style.backgroundColor = "#E05F5E";
         bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
-        bars[j + 1].style.backgroundColor = "red";
+        bars[j + 1].style.backgroundColor = "#E05F5E";
         //bars[j + 1].innerText = array[j + 1];
         await sleep(speedFactor);
       }
+      else{
+        bars[j].style.backgroundColor = "#6699F2";
+      }
+
     }
-    bars[array.length - i - 1].style.backgroundColor = "#F48882"; //final array after sorting
+    bars[array.length - i - 1].style.backgroundColor = "#B678E9"; //final array after sorting
     await sleep(speedFactor);
   }
-  
   return array;
 }
 
