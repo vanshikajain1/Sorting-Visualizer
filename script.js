@@ -78,9 +78,9 @@ async function bubbleSort(array) {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length - i - 1; j++) {
       if (array[j] > array[j + 1]) {
-        for (let k = 0; k < bars.length; k++) {
+        for (let k = 0; k < array.length-i; k++) {
           if (k !== j && k !== j + 1) {
-            bars[k].style.backgroundColor = "green";
+            bars[k].style.backgroundColor = "grey";
           }
         }
         let temp = array[j];
@@ -95,8 +95,10 @@ async function bubbleSort(array) {
         await sleep(speedFactor);
       }
     }
+    bars[array.length - i - 1].style.backgroundColor = "#F48882"; //final array after sorting
     await sleep(speedFactor);
   }
+  
   return array;
 }
 
@@ -121,7 +123,7 @@ async function partition(items, left, right) {
 
   for (let i = 0; i < bars.length; i++) {
     if (i != pivotIndex) {
-      bars[i].style.backgroundColor = "aqua";
+      bars[i].style.backgroundColor = "#F2C76E";  
     }
   }
 
@@ -159,7 +161,7 @@ async function quickSort(items, left, right) {
   }
 
   for (let i = 0; i < bars.length; i++) {
-    bars[i].style.backgroundColor = "aqua";
+    bars[i].style.backgroundColor = "#F48882"; //final array after sorting
   }
   return items;
 }
@@ -184,7 +186,7 @@ async function InsertionSort(array) {
 
       for (let k = 0; k < bars.length; k++) {
         if (k != j + 1) {
-          bars[k].style.backgroundColor = "aqua";
+          bars[k].style.backgroundColor = "#DD9BCF";
         }
       }
       j = j - 1;
@@ -197,7 +199,7 @@ async function InsertionSort(array) {
   }
 
   for (let k = 0; k < bars.length; k++) {
-    bars[k].style.backgroundColor = "aqua";
+    bars[k].style.backgroundColor = "#F48882";
   }
   return array;
 }
@@ -214,7 +216,7 @@ async function HeapSort(array) {
     await heapify(array, i, 0);
   }
   for (let k = 0; k < bars.length; k++) {
-    bars[k].style.backgroundColor = "aqua";
+    bars[k].style.backgroundColor = "grey";
     await sleep(speedFactor);
   }
   return array;
@@ -249,7 +251,7 @@ async function swap(array, i, j, bars) {
 
   for (let k = 0; k < bars.length; k++) {
     if (k != i && k != j) {
-      bars[k].style.backgroundColor = "aqua";
+      bars[k].style.backgroundColor = "grey";
     }
   }
   //bars[i].innerText = array[i];
