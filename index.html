@@ -9,23 +9,14 @@
   </head>
   <body>
     <div class="container">
-      <div class="bars_container" id="bars_container"></div>
-
       <div class="buttons_container">
-        <!-- <label for="slider">Array Size:</label> -->
-        <input
-          type="range"
-          id="slider"
-          min="50"
-          max="150"
-          step="5"
-          value="50"
-        />
+        <label for="slider">Array Size:</label>
+        <input type="range" id="slider" min="10" max="150" step="2" value="55" />
 
         <select name="" id="speed">
-          <option value="100">Slow</option>
+          <option value="5000">Slow</option>
           <option value="50">Medium</option>
-          <option value="10">Fast</option>
+          <option value="1">Fast</option>
         </select>
         <select name="" id="algo">
           <option value="bubble">Bubble Sort</option>
@@ -34,9 +25,10 @@
           <option value="merge">Merge Sort</option>
           <option value="quick">Quick Sort</option>
         </select>
-        <button id="randomize_array_btn">Randomize Array</button>
+        <button id="randomize_array_btn">New Array</button>
         <button id="sort_btn">Sort</button>
       </div>
+      <div class="bars_container" id="bars_container"></div>
     </div>
 
     <script src="script.js"></script>

@@ -8,13 +8,28 @@ let minRange = 1;
 let maxRange = slider.value;
 let numOfBars = slider.value;
 let heightFactor = 4;
-let speedFactor = 100;
+let widthFactor = 30;
+let speedFactor = 1000;
 let unsorted_array = new Array(numOfBars);
+
+function renderBars(array) {
+  for (let i = 0; i < numOfBars; i++) {
+    let bar = document.createElement("div");
+    bar.classList.add("bar");
+    bar.style.height = array[i] * heightFactor + "px";
+    bar.style.width =  widthFactor + "px";
+    bars_container.appendChild(bar);
+  }
+}
 
 slider.addEventListener("input", function () {
   numOfBars = slider.value;
   maxRange = slider.value;
   //console.log(numOfBars);
+  // if (numOfBars < 20) {
+  //   widthFactor = slider.value*4;
+    // heightFactor = slider.value*2;
+  // }
   bars_container.innerHTML = "";
   unsorted_array = createRandomArray();
   renderBars(unsorted_array);
@@ -48,15 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
   renderBars(unsorted_array);
 });
 
-function renderBars(array) {
-  for (let i = 0; i < numOfBars; i++) {
-    let bar = document.createElement("div");
-    bar.classList.add("bar");
-    bar.style.height = array[i] * heightFactor + "px";
-    bars_container.appendChild(bar);
-  }
-}
-
 randomize_array.addEventListener("click", function () {
   unsorted_array = createRandomArray();
   bars_container.innerHTML = "";
@@ -74,17 +80,17 @@ async function bubbleSort(array) {
       if (array[j] > array[j + 1]) {
         for (let k = 0; k < bars.length; k++) {
           if (k !== j && k !== j + 1) {
-            bars[k].style.backgroundColor = "red";
+            bars[k].style.backgroundColor = "green";
           }
         }
         let temp = array[j];
         array[j] = array[j + 1];
         array[j + 1] = temp;
         bars[j].style.height = array[j] * heightFactor + "px";
-        bars[j].style.backgroundColor = "lightgreen";
+        bars[j].style.backgroundColor = "red";
         //bars[j].innerText = array[j];
         bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
-        bars[j + 1].style.backgroundColor = "lightgreen";
+        bars[j + 1].style.backgroundColor = "red";
         //bars[j + 1].innerText = array[j + 1];
         await sleep(speedFactor);
       }
@@ -102,7 +108,7 @@ async function swap(items, leftIndex, rightIndex, bars) {
   bars[leftIndex].style.backgroundColor = "pink";
   //bars[leftIndex].innerText = items[leftIndex];
   bars[rightIndex].style.height = items[rightIndex] * heightFactor + "px";
-  bars[rightIndex].style.backgroundColor = "lightgreen";
+  bars[rightIndex].style.backgroundColor = "black";
   //bars[rightIndex].innerText = items[rightIndex];
   await sleep(speedFactor);
 }
