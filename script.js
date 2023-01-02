@@ -17,7 +17,7 @@ function renderBars(array) {
     let bar = document.createElement("div");
     bar.classList.add("bar");
     bar.style.height = array[i] * heightFactor + "px";
-    bar.style.width =  widthFactor + "px";
+    bar.style.width = widthFactor + "px";
     bars_container.appendChild(bar);
   }
 }
@@ -28,7 +28,7 @@ slider.addEventListener("input", function () {
   //console.log(numOfBars);
   // if (numOfBars < 20) {
   //   widthFactor = slider.value*4;
-    // heightFactor = slider.value*2;
+  // heightFactor = slider.value*2;
   // }
   bars_container.innerHTML = "";
   unsorted_array = createRandomArray();
@@ -72,45 +72,44 @@ randomize_array.addEventListener("click", function () {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-
+//bubble sort
 async function bubbleSort(array) {
   let bars = document.getElementsByClassName("bar");
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length - i - 1; j++) {
-
-      bars[j].style.backgroundColor = "#73DB7C";
-      bars[j + 1].style.backgroundColor = "#73DB7C";
+      bars[j].style.backgroundColor = "#10E173"; //neon green
+      bars[j + 1].style.backgroundColor = "#73DB7C"; //green
       await sleep(speedFactor);
 
       if (array[j] > array[j + 1]) {
-        bars[j].style.backgroundColor = "#E05F5E";
-        bars[j + 1].style.backgroundColor = "#E05F5E";
+        bars[j].style.backgroundColor = "#E05F5E"; //red
+        bars[j + 1].style.backgroundColor = "#E05F5E"; 
         await sleep(speedFactor);
-        for (let k = 0; k < array.length-i; k++) {
+        for (let k = 0; k < array.length - i; k++) {
           if (k !== j && k !== j + 1) {
-            bars[k].style.backgroundColor = "#6699F2";
+            bars[k].style.backgroundColor = "#6699F2"; //blue
           }
         }
         let temp = array[j];
         array[j] = array[j + 1];
         array[j + 1] = temp;
         bars[j].style.height = array[j] * heightFactor + "px";
-        bars[j].style.backgroundColor = "#E05F5E";
+        bars[j].style.backgroundColor = "#EBE966"; //yellow
         bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
-        bars[j + 1].style.backgroundColor = "#E05F5E";
-        //bars[j + 1].innerText = array[j + 1];
+        bars[j + 1].style.backgroundColor = "#EBE966";
+        // bars[j + 1].innerText = array[j + 1];  //array size written in bar
         await sleep(speedFactor);
-      }
-      else{
+        bars[j].style.backgroundColor = "#6699F2"; //blue
+      } else {
         bars[j].style.backgroundColor = "#6699F2";
       }
-
     }
     bars[array.length - i - 1].style.backgroundColor = "#B678E9"; //final array after sorting
     await sleep(speedFactor);
   }
   return array;
 }
+//bubble sort end
 
 async function swap(items, leftIndex, rightIndex, bars) {
   var temp = items[leftIndex];
@@ -133,7 +132,7 @@ async function partition(items, left, right) {
 
   for (let i = 0; i < bars.length; i++) {
     if (i != pivotIndex) {
-      bars[i].style.backgroundColor = "#F2C76E";  
+      bars[i].style.backgroundColor = "#F2C76E";
     }
   }
 
@@ -171,7 +170,7 @@ async function quickSort(items, left, right) {
   }
 
   for (let i = 0; i < bars.length; i++) {
-    bars[i].style.backgroundColor = "#F48882"; //final array after sorting
+    bars[i].style.backgroundColor = "pink"; //final array after sorting
   }
   return items;
 }
@@ -181,7 +180,7 @@ async function quickSort(items, left, right) {
 //   console.log(sorted_array);
 // });
 
-//write insertion sort function
+//insertion sort function
 async function InsertionSort(array) {
   let bars = document.getElementsByClassName("bar");
   for (let i = 1; i < array.length; i++) {
@@ -196,7 +195,7 @@ async function InsertionSort(array) {
 
       for (let k = 0; k < bars.length; k++) {
         if (k != j + 1) {
-          bars[k].style.backgroundColor = "#DD9BCF";
+          bars[k].style.backgroundColor = "#E67235";
         }
       }
       j = j - 1;
@@ -214,8 +213,7 @@ async function InsertionSort(array) {
   return array;
 }
 
-//write heap sort function
-
+//heap sort function
 async function HeapSort(array) {
   let bars = document.getElementsByClassName("bar");
   for (let i = Math.floor(array.length / 2); i >= 0; i--) {
@@ -315,7 +313,7 @@ async function mergeSort(arr) {
     if (k + arr.length < bars.length) {
       bars[k + arr.length].style.height = arr[k] * heightFactor + "px";
       console.log(arr[k] * heightFactor);
-      bars[k + arr.length].style.backgroundColor = "yellow";
+      bars[k + arr.length].style.backgroundColor = "pink";
     }
     await sleep(speedFactor);
     //bars[k].innerText = arr[k];
@@ -335,7 +333,7 @@ async function mergeSort(arr) {
   while (j < right.length) {
     arr[k] = right[j];
     bars[k].style.height = arr[k] * heightFactor + "px";
-    bars[k].style.backgroundColor = "lightgreen";
+    bars[k].style.backgroundColor = "#10E173";
     await sleep(speedFactor);
     j++;
     k++;
@@ -348,24 +346,24 @@ async function mergeSort(arr) {
   // }
 
   for (let k = 0; k < bars.length; k++) {
-    bars[k].style.backgroundColor = "aqua";
+    bars[k].style.backgroundColor = "#6699F2";
   }
 
   return arr;
 }
 
-function mergeSortD(arr, start, end) {
-  if (arr.length < 2) {
-    return arr;
-  }
+// function mergeSortD(arr, start, end) {
+//   if (arr.length < 2) {
+//     return arr;
+//   }
 
-  let middle = Math.floor((start + end) / 2);
-  let left = arr.slice(start, middle);
-  let right = arr.slice(middle, end);
+//   let middle = Math.floor((start + end) / 2);
+//   let left = arr.slice(start, middle);
+//   let right = arr.slice(middle, end);
 
-  //mergeSort(left);
-  mergeSort(right);
-}
+//   //mergeSort(left);
+//   mergeSort(right);
+// }
 
 sort_btn.addEventListener("click", function () {
   switch (algotouse) {
