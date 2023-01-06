@@ -83,7 +83,7 @@ async function bubbleSort(array) {
 
       if (array[j] > array[j + 1]) {
         bars[j].style.backgroundColor = "#E05F5E"; //red
-        bars[j + 1].style.backgroundColor = "#E05F5E"; 
+        bars[j + 1].style.backgroundColor = "#E05F5E";
         await sleep(speedFactor);
         for (let k = 0; k < array.length - i; k++) {
           if (k !== j && k !== j + 1) {
@@ -184,9 +184,10 @@ async function quickSort(items, left, right) {
 async function InsertionSort(array) {
   let bars = document.getElementsByClassName("bar");
   for (let i = 1; i < array.length; i++) {
-    let key = array[i];
+    let current = array[i];
     let j = i - 1;
-    while (j >= 0 && array[j] > key) {
+    bars[j].style.backgroundColor = "black";
+    while (j >= 0 && array[j] > current) {
       array[j + 1] = array[j];
       bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
       bars[j + 1].style.backgroundColor = "red";
@@ -200,15 +201,15 @@ async function InsertionSort(array) {
       }
       j = j - 1;
     }
-    array[j + 1] = key;
+    array[j + 1] = current;
     bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
-    bars[j + 1].style.backgroundColor = "lightgreen";
+    bars[j + 1].style.backgroundColor = "green";
     //bars[j + 1].innerText = array[j + 1];
     await sleep(speedFactor);
   }
 
   for (let k = 0; k < bars.length; k++) {
-    bars[k].style.backgroundColor = "#F48882";
+    bars[k].style.backgroundColor = "#B678E9";
   }
   return array;
 }
