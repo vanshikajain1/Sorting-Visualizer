@@ -9,7 +9,7 @@ let maxRange = slider.value;
 let numOfBars = slider.value;
 let heightFactor = 4;
 let widthFactor = 80;
-let speedFactor = 1000;
+let speedFactor = 1000 * 2;
 let unsorted_array = new Array(numOfBars);
 
 function renderBars(array) {
@@ -78,7 +78,7 @@ async function bubbleSort(array) {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length - i - 1; j++) {
       bars[j].style.backgroundColor = "#10E173"; //neon green
-      bars[j + 1].style.backgroundColor = "#73DB7C"; //green
+      bars[j + 1].style.backgroundColor = "#10E173";
       await sleep(speedFactor);
 
       if (array[j] > array[j + 1]) {
@@ -94,9 +94,9 @@ async function bubbleSort(array) {
         array[j] = array[j + 1];
         array[j + 1] = temp;
         bars[j].style.height = array[j] * heightFactor + "px";
-        bars[j].style.backgroundColor = "#EBE966"; //yellow
+        bars[j].style.backgroundColor = "orange"; //yellow
         bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
-        bars[j + 1].style.backgroundColor = "#EBE966";
+        bars[j + 1].style.backgroundColor = "orange";
         // bars[j + 1].innerText = array[j + 1];  //array size written in bar
         await sleep(speedFactor);
         bars[j].style.backgroundColor = "#6699F2"; //blue
@@ -110,6 +110,46 @@ async function bubbleSort(array) {
   return array;
 }
 //bubble sort end
+
+//insertion sort function
+async function InsertionSort(array) {
+  let bars = document.getElementsByClassName("bar");
+  for (let i = 1; i < array.length; i++) {
+    let current = array[i];
+    let j = i - 1;
+    bars[j].style.backgroundColor = "purple";
+    bars[i].style.backgroundColor = "orange";
+    await sleep(speedFactor);
+    while (j >= 0 && array[j] > current) {
+      bars[j].style.backgroundColor = "purple";
+      await sleep(speedFactor);
+      array[j + 1] = array[j];
+      bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
+      bars[j + 1].style.backgroundColor = "purple";
+      bars[j].style.height = array[j] * heightFactor + "px";
+      bars[j].style.backgroundColor = "lightgrey";
+      await sleep(speedFactor);
+      j = j - 1;
+      for (let k = 0; k < bars.length; k++) {
+        if (k != j + 1 && k!=i) {
+          bars[k].style.backgroundColor = "#6699F2"; //blue
+        }
+      }
+    }
+    array[j + 1] = current;
+    bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
+    bars[j + 1].style.backgroundColor = "#10E173"; //green
+    if(j+1>0){
+      bars[j].style.backgroundColor = "#6699F2"; //blue
+    }
+    await sleep(speedFactor);
+  }
+
+  for (let k = 0; k < bars.length; k++) {
+    bars[k].style.backgroundColor = "#B678E9"; //lilac
+  }
+  return array;
+}
 
 async function swap(items, leftIndex, rightIndex, bars) {
   var temp = items[leftIndex];
@@ -179,40 +219,6 @@ async function quickSort(items, left, right) {
 //   let sorted_array = quickSort(unsorted_array, 0, numOfBars - 1);
 //   console.log(sorted_array);
 // });
-
-//insertion sort function
-async function InsertionSort(array) {
-  let bars = document.getElementsByClassName("bar");
-  for (let i = 1; i < array.length; i++) {
-    let current = array[i];
-    let j = i - 1;
-    bars[j].style.backgroundColor = "black";
-    while (j >= 0 && array[j] > current) {
-      array[j + 1] = array[j];
-      bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
-      bars[j + 1].style.backgroundColor = "red";
-      //bars[j + 1].innerText = array[j + 1];
-      await sleep(speedFactor);
-
-      for (let k = 0; k < bars.length; k++) {
-        if (k != j + 1) {
-          bars[k].style.backgroundColor = "#E67235";
-        }
-      }
-      j = j - 1;
-    }
-    array[j + 1] = current;
-    bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
-    bars[j + 1].style.backgroundColor = "green";
-    //bars[j + 1].innerText = array[j + 1];
-    await sleep(speedFactor);
-  }
-
-  for (let k = 0; k < bars.length; k++) {
-    bars[k].style.backgroundColor = "#B678E9";
-  }
-  return array;
-}
 
 //heap sort function
 async function HeapSort(array) {
