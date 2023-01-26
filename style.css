@@ -2,16 +2,19 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* align-items: center; */
   /* background-color: #e5ab64; */
 }
 
 .buttons_container {
+  width: 60rem;
   height: 5rem;
   display: flex;
   align-items: center;
@@ -34,7 +37,6 @@
   background-color: #6699F2;
   margin: 0 0.125rem;
   border-radius: 0.125rem;
-  /* background-color: aquamarine; */
 }
 
 body {
@@ -43,7 +45,7 @@ body {
 
 .buttons_container > button,
 select {
-  width: 10rem;
+  width: 7rem;
   height: 2rem;
   background-color: #2081e1;
   border: none;
@@ -57,4 +59,10 @@ select {
 
 button:hover {
   background-color: #56697b;
+}
+.box{
+  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
