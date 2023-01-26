@@ -9,7 +9,7 @@ let maxRange = slider.value;
 let numOfBars = slider.value;
 let heightFactor = 4;
 let widthFactor = 80;
-let speedFactor = 1000 * 2;
+let speedFactor = 1000;
 let unsorted_array = new Array(numOfBars);
 
 function renderBars(array) {
@@ -353,7 +353,7 @@ async function mergeSort(arr) {
   // }
 
   for (let k = 0; k < bars.length; k++) {
-    bars[k].style.backgroundColor = "#6699F2";
+    bars[k].style.backgroundColor = "#B678E9";
   }
 
   return arr;

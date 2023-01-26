@@ -5,17 +5,14 @@
 }
 
 .container {
-  /* width: 80%; */
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start; */
-  justify-content: space-evenly;
+  justify-content: center;
   /* background-color: #e5ab64; */
 }
 
 .buttons_container {
-  width: 90rem;
-  height: 10vh;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -33,10 +30,11 @@
 }
 
 .bar {
-  width: 10px;
+  width: 0.625rem;
   background-color: #6699F2;
-  margin: 0 2px;
-  border-radius: 2px;
+  margin: 0 0.125rem;
+  border-radius: 0.125rem;
+  /* background-color: aquamarine; */
 }
 
 body {
@@ -49,9 +47,9 @@ select {
   height: 2rem;
   background-color: #2081e1;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.3rem;
   color: white;
-  font-size: 14px;
+  font-size: 0.9rem;
   cursor: pointer;
   text-align: center;
   transition: 0.2s ease-in-out;
