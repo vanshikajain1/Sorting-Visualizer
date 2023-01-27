@@ -8,6 +8,6 @@
 
 <h3>🛠 Tech Stack</h3>
 
-- 🌐 &nbsp; HTML | CSS | JavaScript | Bootstrap | Sass
+- 🌐 &nbsp; HTML | CSS | JavaScript
 - 🔧 &nbsp; Visual Studio code  | Git
 - 👩‍🎨 &nbsp; Figma
