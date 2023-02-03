@@ -9,5 +9,5 @@
 <h3>🛠 Tech Stack</h3>
 
 - 🌐 &nbsp; HTML | CSS | JavaScript
-- 🔧 &nbsp; Visual Studio code  | Git
+- 🔧 &nbsp; Visual Studio Code  | Git
 - 👩‍🎨 &nbsp; Figma
