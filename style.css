@@ -34,7 +34,7 @@
 
 .bar {
   width: 0.625rem;
-  background-color: #6699F2;
+  background-color: #6699f2;
   margin: 0 0.125rem;
   border-radius: 0.125rem;
 }
@@ -45,7 +45,7 @@ body {
 
 .buttons_container > button,
 select {
-  width: 7rem;
+  width: 8rem;
   height: 2rem;
   background-color: #2081e1;
   border: none;
@@ -60,7 +60,7 @@ select {
 button:hover {
   background-color: #56697b;
 }
-.box{
+.box {
   /* background-color: aqua; */
   display: flex;
   align-items: center;
