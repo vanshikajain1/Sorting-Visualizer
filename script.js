@@ -111,6 +111,30 @@ async function bubbleSort(array) {
 }
 //bubble sort end
 
+//selection sort
+async function SelectionSort(array) {
+  let bars = document.getElementsByClassName("bar");
+  for (let i = 0; i < array.length - 1; i++) {
+    let smallest = i;
+    bars[smallest].style.backgroundColor = "red";
+    await sleep(speedFactor);
+    for (let j = [i + 1]; j < array.length; j++) {
+      bars[j].style.backgroundColor = "yellow";
+      await sleep(speedFactor);
+      if (array[smallest] > array[j]) {
+        bars[smallest].style.backgroundColor = "green";
+        bars[j].style.backgroundColor = "green";
+        await sleep(speedFactor);
+        smallest = j;
+      }
+    }
+    let temp = array[smallest];
+    array[smallest] = array[i];
+    array[i] = temp;
+  }
+  return array;
+}
+
 //insertion sort function
 async function InsertionSort(array) {
   let bars = document.getElementsByClassName("bar");
@@ -131,7 +155,7 @@ async function InsertionSort(array) {
       await sleep(speedFactor);
       j = j - 1;
       for (let k = 0; k < bars.length; k++) {
-        if (k != j + 1 && k!=i) {
+        if (k != j + 1 && k != i) {
           bars[k].style.backgroundColor = "#6699F2"; //blue
         }
       }
@@ -139,7 +163,7 @@ async function InsertionSort(array) {
     array[j + 1] = current;
     bars[j + 1].style.height = array[j + 1] * heightFactor + "px";
     bars[j + 1].style.backgroundColor = "#10E173"; //green
-    if(j+1>0){
+    if (j + 1 > 0) {
       bars[j].style.backgroundColor = "#6699F2"; //blue
     }
     await sleep(speedFactor);
@@ -391,6 +415,9 @@ sort_btn.addEventListener("click", function () {
       break;
     case "heap":
       HeapSort(unsorted_array);
+      break;
+    case "selection":
+      SelectionSort(unsorted_array);
       break;
     case "insertion":
       InsertionSort(unsorted_array);
